@@ -33,7 +33,7 @@ foreach ($var in $userslist) {
 
 }
 
-Remove-Item C:\Windows\Temp\*.* -Force
+Remove-Item C:\Windows\Temp\*.* -Force -ErrorAction SilentlyContinue
 Clear-RecycleBin -Force
 
 Set-ExecutionPolicy Restricted
