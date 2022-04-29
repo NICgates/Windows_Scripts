@@ -30,8 +30,8 @@ foreach ($userVar in $userslist) {
     if (Test-Path "C:\Users\$userVar\AppData\Roaming\Microsoft\Teams\Cache\") {
         Remove-Item "C:\Users\$userVar\AppData\Roaming\Microsoft\Teams\Cache\*.*" -Force -ErrorAction SilentlyContinue
     }
-    if (Test-Path "C:\Users\$userVar\AppData\Local\Mozilla\Firefox\Profiles\6yh3j0mz.default-release\cache2\") {
-        Remove-Item "C:\Users\$userVar\AppData\Local\Mozilla\Firefox\Profiles\6yh3j0mz.default-release\cache2\*.*" -Force -ErrorAction SilentlyContinue
+    if (Test-Path "C:\Users\$userVar\AppData\Local\Mozilla\Firefox\Profiles\*.default-release\cache2\") {
+        Remove-Item "C:\Users\$userVar\AppData\Local\Mozilla\Firefox\Profiles\*.default-release\cache2\*.*" -Force -ErrorAction SilentlyContinue
     }
     
     
