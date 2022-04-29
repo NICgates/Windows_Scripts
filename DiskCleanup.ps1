@@ -33,9 +33,6 @@ foreach ($userVar in $userslist) {
     if (Test-Path "C:\Users\$userVar\AppData\Local\Mozilla\Firefox\Profiles\*.default-release\cache2\") {
         Remove-Item "C:\Users\$userVar\AppData\Local\Mozilla\Firefox\Profiles\*.default-release\cache2\*.*" -Force -ErrorAction SilentlyContinue
     }
-    
-    
-
 }
 
 Remove-Item C:\Windows\Temp\*.* -Force -ErrorAction SilentlyContinue
