@@ -39,3 +39,22 @@ Remove-Item C:\Windows\Temp\*.* -Force -ErrorAction SilentlyContinue
 Clear-RecycleBin -Force
 
 Set-ExecutionPolicy Restricted
+
+
+######################################################
+# The follow commands does what the script above does. 
+
+# Remove-Item C:\Users\*\AppData\Temp\*.* -Force -ErrorAction SilentlyContinue
+# Remove-Item "C:\Users\*\AppData\Local\Google\User Data\Profile 1\Cache\*.*" -Force -ErrorAction SilentlyContinue
+# Remove-Item "C:\Users\*\AppData\Local\Google\User Data\Profile 1\Code Cache\*.*" -Force -ErrorAction SilentlyContinue
+# Remove-Item "C:\Users\*\AppData\Local\Google\User Data\Default\Cache\*.*" -Force -ErrorAction SilentlyContinue
+# Remove-Item "C:\Users\*\AppData\Local\Google\User Data\Default\Code Cache\*.*" -Force -ErrorAction SilentlyContinue
+# Remove-Item "C:\Users\*\AppData\Roaming\Microsoft\Teams\Service Worker\CacheStorage\*.*" -Force -ErrorAction SilentlyContinue
+# Remove-Item "C:\Users\*\AppData\Roaming\Microsoft\Teams\Cache\*.*" -Force -ErrorAction SilentlyContinue
+# Remove-Item "C:\Users\*\AppData\Local\Mozilla\Firefox\Profiles\*.default-release\cache2\*.*" -Force -ErrorAction SilentlyContinue
+# Remove-Item C:\Windows\Temp\*.* -Force -ErrorAction SilentlyContinue
+# Clear-RecycleBin -Force
+
+
+
+
