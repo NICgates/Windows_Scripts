@@ -2,7 +2,6 @@
 # Uninstall Teams 
 #
 
-
 Set-ExecutionPolicy RemoteSigned
 
 $userslist = Get-ChildItem -Directory "C:\Users"
@@ -14,5 +13,7 @@ foreach ($userVar in $userslist) {
 }
 
 Remove-Item C:\Users\*\AppData\Local\Microsoft\Teams* -Force -ErrorAction SilentlyContinue
+Remove-Item C:\Users\*\AppData\Roaming\Microsoft\Teams* -Force -ErrorAction SilentlyContinue
+
 
 Set-ExecutionPolicy Restricted 
