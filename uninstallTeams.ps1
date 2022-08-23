@@ -13,4 +13,6 @@ foreach ($userVar in $userslist) {
     }
 }
 
+Remove-Item C:\Users\*\AppData\Local\Microsoft\Teams* -Force -ErrorAction SilentlyContinue
+
 Set-ExecutionPolicy Restricted 
