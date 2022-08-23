@@ -14,7 +14,7 @@ foreach ($userVar in $userslist) {
 }
 
 #Uninstall Teams Machine-Wide Installer
-Start-Process -FilePath "C:\Program Files (x86)\Teams Installer\Teams.exe" -ArgumentList "-uninstall -s" -EA Stop
+(Get-WMIObject Win32_Product -Filter 'name="Teams Machine-Wide Installer"').Uninstall()
 
 #Cleanup files
 Remove-Item C:\Users\*\AppData\Local\Microsoft\Teams* -Force -ErrorAction SilentlyContinue
