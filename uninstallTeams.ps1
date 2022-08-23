@@ -16,9 +16,8 @@ foreach ($userVar in $userslist) {
 #Uninstall Teams Machine-Wide Installer
 Start-Process -FilePath "C:\Program Files (x86)\Teams Installer\Teams.exe" -ArgumentList "-uninstall -s" -EA Stop
 
-#File cleanup
+#Cleanup files
 Remove-Item C:\Users\*\AppData\Local\Microsoft\Teams* -Force -ErrorAction SilentlyContinue
 Remove-Item C:\Users\*\AppData\Roaming\Microsoft\Teams* -Force -ErrorAction SilentlyContinue
-
 
 Set-ExecutionPolicy Restricted 
