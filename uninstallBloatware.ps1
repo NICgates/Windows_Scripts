@@ -44,10 +44,12 @@ $bloatware = @(
     "*Zune*"    
 )
 foreach ($bloat in $bloatware) {
-    if (($app = Get-AppxPackage -AllUsers $bloat) -and ($app.Name -notlike "*XboxGameCallableUI*")) {
+    if ($app = Get-AppxPackage -AllUsers $bloat) {
+        Write-Progress -CurrentOperation "$($app.Name) app found. Uninstalling..." -Activity "Uninstalling"
         try { $app | Remove-AppxPackage -allusers -EA Stop }                 
     }
     if ($provapp = Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -like $bloat}) {
+        Write-Progress -CurrentOperation "$($provapp.DisplayName) provisioned app found. Uninstalling..." -Activity "Uninstalling"
         try { $provapp | Remove-AppxProvisionedPackage -Online -EA Stop } 
     }
 }
