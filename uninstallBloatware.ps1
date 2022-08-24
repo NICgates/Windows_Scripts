@@ -1,7 +1,6 @@
 # Uninstall bloatware on Windows 10. 
 # Credit to Github/Wdomon.
 
-
 $bloatware = @(
     "*3DBuilder*"
     "*Bing*"
@@ -43,6 +42,7 @@ $bloatware = @(
     "*yourphone*"
     "*Zune*"    
 )
+
 foreach ($bloat in $bloatware) {
     if ($app = Get-AppxPackage -AllUsers $bloat) {
         Write-Progress -CurrentOperation "$($app.Name) app found. Uninstalling..." -Activity "Uninstalling"
