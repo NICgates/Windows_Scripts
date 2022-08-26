@@ -9,5 +9,5 @@ Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6
 
 
 # Reset Hostfile 
-Remove-Item %WinDir%\System32\drivers\etc\hosts
+Remove-Item "%WinDir%\System32\drivers\etc\hosts"
 New-Item "%WinDir%\System32\drivers\etc\hosts.txt" -ItemType File -Value "# 127.0.0.1 localhost #"
