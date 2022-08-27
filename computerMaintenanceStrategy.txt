@@ -1,0 +1,17 @@
+Computer Maintenance Strategy 
+
+------------------------------------------------------------------------
+
+- Yearly Computer and User Cleanup
+  1. After a month into the school year, run a last login cleanup script. 
+     If a user hasn't logged into a computer in less than delete their entire user directory. 
+  2. If a user hasn't logged into any computer within the first month of school, as who's account is over a year old,
+     then move that account into a Deactivated OU.
+  3. If a computer hasn't been logged into that school year, and isn't a Spring Creek PC, then move it into a Deactivated OU. 
+     
+------------------------------------------------------------------------
+     
+- Monthly Computer Cleanup & Checkin
+  1. Every month, delete unnecessary temp and cached data. 
+  2. If a computer hasn't been online for a month, check if it's missing, who used it last, and if it works. 
+
