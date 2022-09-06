@@ -1,13 +1,15 @@
-# Credit: Robert Allen, activedirectorypro.com
+#
+# Bulk Add 
+#
 
 #Import active directory module for running AD cmdlets
 Import-Module activedirectory
 
 #Store the data from ADUsers.csv in the $ADUsers variable
-$Users = Import-csv c:\it\bulk_import.csv
+$UsersList = Import-csv c:\it\bulk_import.csv
 
 #Loop through each row containing user details in the CSV file 
-foreach ($User in $Users) {
+foreach ($User in $UsersList) {
     # Read user data from each field in each row
     # the username is used more often, so to prevent typing, save that in a variable
    $Username       = $User.SamAccountName
@@ -26,29 +28,29 @@ foreach ($User in $Users) {
             Path                       = $User.path      
             GivenName                  = $User.GivenName 
             Surname                    = $User.Surname
-            Initials                   = $User.Initials
+#            Initials                   = $User.Initials
             Name                       = $User.Name
             DisplayName                = $User.DisplayName
-            UserPrincipalName          = $user.UserPrincipalName 
-            Department                 = $User.Department
-            Description                = $User.Description
-            Office                     = $User.Office
-            OfficePhone                = $User.OfficePhone
-            EmailAddress               = $User.EmailAddress
-            StreetAddress              = $User.StreetAddress
-            POBox                      = $User.POBox
-            City                       = $User.City
-            State                      = $User.State
-            PostalCode                 = $User.PostalCode
-            Title                      = $User.Title
-            Company                    = $User.Company
+#            UserPrincipalName          = $user.UserPrincipalName 
+#            Department                 = $User.Department
+#            Description                = $User.Description
+#            Office                     = $User.Office
+#            OfficePhone                = $User.OfficePhone
+#            EmailAddress               = $User.EmailAddress
+#            StreetAddress              = $User.StreetAddress
+#            POBox                      = $User.POBox
+#            City                       = $User.City
+#            State                      = $User.State
+#            PostalCode                 = $User.PostalCode
+#            Title                      = $User.Title
+#            Company                    = $User.Company
             AccountPassword            = (ConvertTo-SecureString $User.password -AsPlainText -Force) 
             Enabled                    = $true
             ChangePasswordAtLogon      = $true
         }   #end userprops   
 
          New-ADUser @userProps
-       #  Write-Host "The user account $User is created." -ForegroundColor Cyan
+         Write-Host "The user account $User is created." -ForegroundColor Cyan
    
 
     } #end else
