@@ -6,7 +6,9 @@
 Import-Module activedirectory
 
 #Store the data from ADUsers.csv in the $ADUsers variable
-$UsersList = Import-csv c:\it\bulk_import.csv
+$UsersList = Import-csv C:\it\bulk_import.csv
+#grade level to path for each column
+$PathList = Import-csv C:\it\path_list.csv
 
 #Loop through each row containing user details in the CSV file 
 foreach ($User in $UsersList) {
@@ -25,7 +27,7 @@ foreach ($User in $UsersList) {
         # create a hashtable for splatting the parameters
         $userProps = @{
             SamAccountName             = $User.SamAccountName                   
-            Path                       = $User.path      
+            Path                       = $PathList.($User.grade)      
             GivenName                  = $User.GivenName 
             Surname                    = $User.Surname
 #            Initials                   = $User.Initials
