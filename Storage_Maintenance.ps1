@@ -1,5 +1,7 @@
 #Computer Storage Maintenance Script    
 #------------------------------------------------------------------------
+Set-ExecutionPolicy RemoteSigned 
+
 $Logfile = "C:\PS\Logs\proc_$env:computername.log"
 function WriteLog{
     Param ([string]$LogString)
@@ -11,8 +13,9 @@ $hostname = hostname
 $userslist = Get-ChildItem -Directory "C:\Users"
 
 foreach ($userVar in $userslist) {
+    $userLastLogon = Get-ADUser -Identity $userVar -Properties LastLogon
     # 1. If a user has logged into computer < 3 months, then delete unnecessary temp and cached data. 
-    if () {
+    if ($userLastLogon < 90) {
         if (Test-Path C:\Users\$userVar\AppData\Temp) {
             Remove-Item C:\Users\$userVar\AppData\Temp\*.* -Force -ErrorAction SilentlyContinue
         }
@@ -37,14 +40,16 @@ foreach ($userVar in $userslist) {
         if (Test-Path "C:\Users\$userVar\AppData\Local\Mozilla\Firefox\Profiles\*.default-release\cache2\") {
             Remove-Item "C:\Users\$userVar\AppData\Local\Mozilla\Firefox\Profiles\*.default-release\cache2\*.*" -Force -ErrorAction SilentlyContinue
         }
-        
+        WriteLog "1. Deleted user temperary files"
     }
-    # 2. If a user has NOT logged into computre > 3 months, then delete entire user directory. 
-    if () {  
-        Remove-Item C:\Users\$userVar\*
+    # 2. If a user has NOT logged into computre > 6 months, then delete entire user directory. 
+    if ($userLastLogon > 90) {  
+        Remove-Item C:\Users\$userVar\*.* -Force -ErrorAction SilelntlyContinue
         WriteLog "2. Deleted $userVar directory from $hostname"
     }
 }
 
 Remove-Item C:\Windows\Temp\*.* -Force -ErrorAction SilentlyContinue
 Clear-RecycleBin -Force
+
+Set-ExecutionPolicy Restricted
