@@ -5,7 +5,12 @@ Set-ExecutionPolicy RemoteSigned
 
 #------------------------------------------------------------------------
 # 1. If a user has NOT logged into computre > 1 months, then delete entire user directory. 
-ForFiles /p "C:\Users\" /s /d -30 /c "cmd /c del @file"
+$userslist = Get-ChildItem -Directory "C:\Users"
+foreach ($userVar in $userslist) {
+    if (($userVar -ne "Nick") -and ($userVar -ne "Administrator") -and ($userVar -ne "bcsadmin")) {
+        ForFiles /p "C:\Users\$userVar" /s /d -30 /c "cmd /c del @file"
+    }
+}
 
 #------------------------------------------------------------------------
 # 2. If a user has logged into computer < 3 months, then delete unnecessary temp and cached data. 
