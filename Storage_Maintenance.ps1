@@ -25,7 +25,7 @@ foreach ($userVar in $userslist) {
 
 #------------------------------------------------------------------------
 Remove-Item C:\Windows\Temp\*.* -Force -ErrorAction SilentlyContinue
-Remove-Item C:\Windows\Prefetch\*.* -Force -ErrorAction SilentlyContinue
+#Remove-Item C:\Windows\Prefetch\*.* -Force -ErrorAction SilentlyContinue
 #Remove-Item "C:\Documents and Settings*\Local Settings\Temp\*.*" -Force -ErrorAction SilentlyContinue
     
 Clear-RecycleBin -Force
