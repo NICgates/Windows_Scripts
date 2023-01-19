@@ -5,7 +5,7 @@ Set-ExecutionPolicy RemoteSigned
 
 #------------------------------------------------------------------------
 # 1. If a user has NOT logged into computre > 1 months, then delete entire user directory. 
-Get-ChildItem –Path "C:\Users\Owner\Documents\" -Recurse | ` 
+Get-ChildItem –Path "C:\Users\" -Recurse | ` 
 Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-30))} | `
 Where-Object {$_.Name -notin "Nick" -and "bcsadmin" -and "Administrator"} | Remove-Item
 
