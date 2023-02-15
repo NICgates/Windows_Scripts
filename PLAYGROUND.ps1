@@ -22,3 +22,10 @@ Get-EventLog Security -Computer "BCS-MOB6-03" -InstanceId 4624 -EntryType Succes
     Sort-Object TimeGenerated -Desc |
     Select-Object -First 1 TimeGenerated, @{n='Account';e={$matches[1]}}
    
+$usersList = Get-childItem -Path "C:\Users\" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-30))} | `
+Where-Object {($_.Name -notin "Nick") -and ($_.Name -notin "bcsadmin") -and ($_.Name -notin "Administrator")} | FT name
+foreach ($userVar in $usersList) {
+    # Get-ChildItem -Path "C:\Users\$userVar\" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
+    # echo $userVar
+    Get-ChildItem -Path C:\Users\$userVar\ | echo
+}
