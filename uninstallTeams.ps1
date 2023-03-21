@@ -17,8 +17,8 @@ foreach ($userVar in $userslist) {
 (Get-WMIObject Win32_Product -Filter 'name="Teams Machine-Wide Installer"').Uninstall()
 
 #Cleanup files
-Remove-Item C:\Users\*\AppData\Local\Microsoft\Teams* -Force -ErrorAction SilentlyContinue
-Remove-Item C:\Users\*\AppData\Roaming\Microsoft\Teams* -Force -ErrorAction SilentlyContinue
-Remove-Item "C:\Program Files (x86)\Teams Installer*" -Force -ErrorAction SilentlyContinue
+Remove-Item C:\Users\*\AppData\Local\Microsoft\Teams* -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item C:\Users\*\AppData\Roaming\Microsoft\Teams* -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Teams Installer*" -Recurse -Force -ErrorAction SilentlyContinue
 
 Set-ExecutionPolicy Restricted 
