@@ -1,55 +1,55 @@
-# Uninstall bloatware on Windows 10. 
-# Credit to Github/Wdomon.
+##########################################################
+# Uninstall unnecessary Windows apps
 
-$bloatware = @(
-    "*3DBuilder*"
-    "*Bing*"
+$appList = @(
+    "Microsoft.BingWeather*"
+    "Microsoft.GetHelp*"
+    "Microsoft.Microsoft3DViewer*"
+    "Microsoft.MicrosoftOfficeHub*"
+    "Microsoft.MicrosoftSolitaireCollection*"
+    "Microsoft.MicrosoftStickyNotes*"
+    "Microsoft.MixedReality.Portal*"
+    "Microsoft.Office.OneNote*"
+    "Microsoft.People*"
+    "Microsoft.Print3D*"
+    "Microsoft.ScreenSketch*"
+    "Microsoft.SkypeApp*"
+    "Microsoft.StorePurchaseApp*"
+    "Microsoft.Wallet*"
+    "Microsoft.WindowsAlarms*"
+    "Microsoft.windowscommunicationsapps*"
+    "Microsoft.WindowsFeedbackHub*"
+    "Microsoft.WindowsMaps*"
+    "Microsoft.WindowsSoundRecorder*"
+    "Microsoft.WindowsStore*"
+    "Microsoft.Xbox.TCUI*"
+    "Microsoft.XboxApp*"
+    "Microsoft.XboxGameOverlay*"
+    "Microsoft.XboxGamingOverlay*"
+    "Microsoft.XboxIdentityProvider*"
+    "Microsoft.XboxSpeechToTextOverlay*"
+    "Microsoft.YourPhone*"
+    "Microsoft.ZuneMusic*"
+    "Microsoft.ZuneVideo*"
+    "*ActiproSoftwareLLC*"
     "*CandyCrush*"
-    "*DellInc.DellDigitalDelivery*"
-    "*Dropbox*"
+    "*Duolingo*"
+    "*EclipseManager*"
     "*Facebook*"
-    "*feedbackhub*"
-    "*freshpaint*"
-    "*gethelp*"
-    "*getstarted*"
-    "*king.com*"
-    "*Linkedin*"
-    "*maps*"
-    "*Microsoft.Messaging*"
-    "*Microsoft.MsixPackagingTool*"
-    "*Microsoft.OneConnect*"
-    "*Microsoft.People*"
-    "*Microsoft.RemoteDesktop*"
-    "*Microsoft.YourPhone*"
-    "*Microsoft3DViewer*"
-    "*MixedReality*"
-    "*Netflix*"
-    "*Office*"
-    "*print3D*"
-    "*Sketchable*"
-    "*Skype*"
-    "*Solitaire*"
-    "*soundrecorder*"
+    "*king.com.FarmHeroesSaga*"
+    "*Flipboard*"
+    "*HiddenCityMysteryofShadows*"
+    "*HuluLLC.HuluPlus*"
+    "*Pandora*"
+    "*Plex*"
+    "*ROBLOXCORPORATION.ROBLOX*"
     "*Spotify*"
+    "*Netflix*"
+    "*Microsoft.SkypeApp*"
     "*Twitter*"
-    "*wallet*"
-    "*windowsalarms*"
-    "*windowscommunicationsapps*"
-    "*Windowsphone*"
-    "*xbox*"
-    "*xboxapp*"
-    "*xboxgameoverlay*"
-    "*yourphone*"
-    "*Zune*"    
+    "*Wunderlist*"
 )
 
-foreach ($bloat in $bloatware) {
-    if ($app = Get-AppxPackage -AllUsers $bloat) {
-        Write-Progress -CurrentOperation "$($app.Name) app found. Uninstalling..." -Activity "Uninstalling"
-        $app | Remove-AppxPackage -allusers -EA Stop                
-    }
-    if ($provapp = Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -like $bloat}) {
-        Write-Progress -CurrentOperation "$($provapp.DisplayName) provisioned app found. Uninstalling..." -Activity "Uninstalling"
-        $provapp | Remove-AppxProvisionedPackage -Online -EA Stop  
-    }
+foreach ($app in $appList) {
+    Get-AppxPackage -allusers $app | Remove-AppxPackage -ErrorAction SilentlyContinue               
 }
