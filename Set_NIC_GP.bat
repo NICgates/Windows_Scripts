@@ -14,4 +14,7 @@ netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes
 gpupdate /force
 ::gpresult -h C:\gpresult.html
 
+::Restart the PC
+echo "Restart computer?"
 pause
+shutdown /r
