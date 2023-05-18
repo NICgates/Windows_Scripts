@@ -14,3 +14,6 @@ Get-ADComputer -Filter * -SearchBase "OU=Students,DC=BCS,DC=LOCAL" -Properties *
 Get-ADComputer -Filter * -SearchBase "DC=BCS,DC=LOCAL" -Properties * `
     | Sort LastLogon | Select Name, LastLogonDate,@{Name='LastLogon';Expression={[DateTime]::FromFileTime($_.LastLogon)}} `
     | Export-Csv C:\ADComputer-last-logon-ou.csv -NoTypeInformation
+
+# Get last login of specific computer.
+Get-ADComputer -Identity "ComputerName" -Properties * | FT Name,LastLogonDate
