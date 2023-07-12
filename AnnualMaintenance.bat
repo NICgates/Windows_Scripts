@@ -25,6 +25,12 @@ Remove-Item C:\Windows\Temp\*.* -Force -ErrorAction SilentlyContinue
 Clear-RecycleBin -Force
 
 
+::Uninstall Teams 
+
+
+::Disable Dell System Repair
+
+
 ::##############################################################################
 :: Group Policy update
 gpupdate /force 
