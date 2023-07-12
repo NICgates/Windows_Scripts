@@ -27,6 +27,16 @@ Clear-RecycleBin -Force
 :: Group Policy update
 gpupdate /force 
 gpresult -h C:\gpresultJuly.html
+
+::##############################################################################
+:: Get PC stats
+echo "#####################################" >> [Location]\PCstats.txt
+hostname >> [Location]\PCstats.txt
+echo "HDD Health Stats:" >> [Location]\PCstats.txt
+wmic diskdrive get model,status >> [Location]\PCstats.txt
+fsutil volume diskfree c: >> [Location]\PCstats.txt
+
+
 echo "Restart computer?"
 pause
 shutdown /r
