@@ -19,7 +19,8 @@ netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes
 
 ::##############################################################################
 :: C Drive Cleanup
-
+Remove-Item C:\Windows\Temp\*.* -Force -ErrorAction SilentlyContinue
+Clear-RecycleBin -Force
 
 
 ::##############################################################################
