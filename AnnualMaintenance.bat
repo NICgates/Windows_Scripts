@@ -1,3 +1,5 @@
+start "UNICODE" cmd /U
+
 ::##############################################################################
 :: Join Networks 
 netsh wlan set profileparameter name="BCS" connectionmode=Manual
@@ -30,11 +32,14 @@ gpresult -h C:\gpresultJuly.html
 
 ::##############################################################################
 :: Get PC stats
-echo "#####################################" >> [Location]\PCstats.txt
-hostname >> [Location]\PCstats.txt
-echo "HDD Health Stats:" >> [Location]\PCstats.txt
-wmic diskdrive get model,status >> [Location]\PCstats.txt
-fsutil volume diskfree c: >> [Location]\PCstats.txt
+echo ##########################################################################################   >> C:\Users\Nick\Desktop\PCstats.txt
+hostname >> C:\Users\Nick\Desktop\PCstats.txt
+echo --------- HARD DRIVE STATUS ---------  >> C:\Users\Nick\Desktop\PCstats.txt
+wmic diskdrive get model,status >> C:\Users\Nick\Desktop\PCstats.txt
+wmic logicaldisk get name,size,freespace >> C:\Users\Nick\Desktop\PCstats.txt
+echo ---------  NETWORK STATUS --------- >> C:\Users\Nick\Desktop\PCstats.txt
+ipconfig | find /i "IPv4 Address" >> C:\Users\Nick\Desktop\PCstats.txt
+ipconfig /all | find /i "DNS Servers" >> C:\Users\Nick\Desktop\PCstats.txt
 
 
 echo "Restart computer?"
